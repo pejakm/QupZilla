@@ -6,102 +6,307 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>512</width>
-    <height>264</height>
+    <width>452</width>
+    <height>379</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>&lt;b&gt;Issued To&lt;/b&gt;</string>
-     </property>
-    </widget>
-   </item>
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::ExpandingFieldsGrow</enum>
+   </property>
    <item row="1" column="0">
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="label_21">
      <property name="text">
-      <string>Common Name (CN):</string>
+      <string>Encryption:</string>
      </property>
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QLabel" name="issuedToCN">
+    <widget class="QLabel" name="certEncr">
      <property name="text">
       <string/>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="label_8">
+    <widget class="QLabel" name="label_22">
      <property name="text">
-      <string>Organization (O):</string>
+      <string>SSL Version:</string>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QLabel" name="issuedToO">
+    <widget class="QLabel" name="sslVersion">
      <property name="text">
       <string/>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
-    <widget class="QLabel" name="label_10">
+    <widget class="QLabel" name="label_23">
      <property name="text">
-      <string>Organizational Unit (OU):</string>
+      <string>Details:</string>
      </property>
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QLabel" name="issuedToOU">
+    <widget class="QLabel" name="certDetails">
      <property name="text">
       <string/>
      </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-     </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_11">
-     <property name="text">
-      <string>Serial Number:</string>
+   <item row="4" column="0" colspan="2">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLabel" name="issuedToSN">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-     </property>
+     <widget class="QWidget" name="issuedTo">
+      <attribute name="title">
+       <string>Isued To</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QLabel" name="issuedToCN">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="issuedToL">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Organizational Unit:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Organization:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="issuedToC">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_1">
+         <property name="text">
+          <string>Common Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLabel" name="issuedToST">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="issuedToO">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>City:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="issuedToOU">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>State:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Country:</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="issuedBy">
+      <attribute name="title">
+       <string>Issued By</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Organization:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Organizational Unit:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="issuedByCN">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Common Name:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Country:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="issuedByO">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="issuedByOU">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="issuedByC">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLabel" name="issuedByST">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLabel" name="issuedByL">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>City:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>State:</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item row="5" column="0">
-    <widget class="QLabel" name="label_16">
+    <widget class="QLabel" name="label_25">
      <property name="text">
-      <string>&lt;b&gt;Issued By&lt;/b&gt;</string>
+      <string>Trusted:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLabel" name="validity">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
      </property>
     </widget>
    </item>
    <item row="6" column="0">
-    <widget class="QLabel" name="label_17">
+    <widget class="QLabel" name="label_26">
      <property name="text">
-      <string>Common Name (CN):</string>
+      <string>Validity period:</string>
      </property>
     </widget>
    </item>
    <item row="6" column="1">
-    <widget class="QLabel" name="issuedByCN">
+    <widget class="QLabel" name="period">
      <property name="text">
       <string/>
      </property>
@@ -111,14 +316,14 @@
     </widget>
    </item>
    <item row="7" column="0">
-    <widget class="QLabel" name="label_18">
+    <widget class="QLabel" name="label_27">
      <property name="text">
-      <string>Organization (O):</string>
+      <string>Serial Number:</string>
      </property>
     </widget>
    </item>
    <item row="7" column="1">
-    <widget class="QLabel" name="issuedByO">
+    <widget class="QLabel" name="issuedToSN">
      <property name="text">
       <string/>
      </property>
@@ -128,14 +333,14 @@
     </widget>
    </item>
    <item row="8" column="0">
-    <widget class="QLabel" name="label_19">
+    <widget class="QLabel" name="label_28">
      <property name="text">
-      <string>Organizational Unit (OU):</string>
+      <string>MD5 Hash:</string>
      </property>
     </widget>
    </item>
    <item row="8" column="1">
-    <widget class="QLabel" name="issuedByOU">
+    <widget class="QLabel" name="certMd5">
      <property name="text">
       <string/>
      </property>
@@ -145,38 +350,14 @@
     </widget>
    </item>
    <item row="9" column="0">
-    <widget class="QLabel" name="label_20">
+    <widget class="QLabel" name="label_29">
      <property name="text">
-      <string>&lt;b&gt;Validity&lt;/b&gt;</string>
+      <string>SHA1 Hash:</string>
      </property>
     </widget>
    </item>
-   <item row="10" column="0">
-    <widget class="QLabel" name="label_21">
-     <property name="text">
-      <string>Issued On:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="1">
-    <widget class="QLabel" name="validityIssuedOn">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="0">
-    <widget class="QLabel" name="label_22">
-     <property name="text">
-      <string>Expires On:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="1">
-    <widget class="QLabel" name="validityExpiresOn">
+   <item row="9" column="1">
+    <widget class="QLabel" name="certSha1">
      <property name="text">
       <string/>
      </property>

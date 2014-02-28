@@ -22,6 +22,7 @@
 
 #include <QSslCertificate>
 #include <QDateTime>
+#define tr(s) QObject::tr(s)
 
 QString CertificateInfoWidget::certificateItemText(const QSslCertificate &cert)
 {
@@ -302,7 +303,7 @@ QString CertificateInfoWidget::clearCertSpecialSymbols(const QStringList &string
 QString CertificateInfoWidget::showCertInfo(const QString &string)
 {
     if (string.isEmpty()) {
-        return QObject::tr("<not set in certificate>");
+        return tr("<not set in certificate>");
     }
     else {
         return clearCertSpecialSymbols(string);
@@ -324,19 +325,52 @@ CertificateInfoWidget::CertificateInfoWidget(const QSslCertificate &cert, QWidge
 {
     ui->setupUi(this);
 
+    //Main
+//     ui->certEncr->setText(certEncryption);
+//     ui->sslVersion->setText(certSslVersion);
+//     ui->certDetails->setText(certDetails);
+
     //Issued to
     ui->issuedToCN->setText(showCertInfo(cert.subjectInfo(QSslCertificate::CommonName)));
     ui->issuedToO->setText(showCertInfo(cert.subjectInfo(QSslCertificate::Organization)));
     ui->issuedToOU->setText(showCertInfo(cert.subjectInfo(QSslCertificate::OrganizationalUnitName)));
-    ui->issuedToSN->setText(showCertInfo(cert.serialNumber()));
+    ui->issuedToC->setText(showCertInfo(cert.subjectInfo(QSslCertificate::CountryName)));
+    ui->issuedToST->setText(showCertInfo(cert.subjectInfo(QSslCertificate::StateOrProvinceName)));
+    ui->issuedToL->setText(showCertInfo(cert.subjectInfo(QSslCertificate::LocalityName)));
+
     //Issued By
     ui->issuedByCN->setText(showCertInfo(cert.issuerInfo(QSslCertificate::CommonName)));
     ui->issuedByO->setText(showCertInfo(cert.issuerInfo(QSslCertificate::Organization)));
     ui->issuedByOU->setText(showCertInfo(cert.issuerInfo(QSslCertificate::OrganizationalUnitName)));
+    ui->issuedByC->setText(showCertInfo(cert.issuerInfo(QSslCertificate::CountryName)));
+    ui->issuedByST->setText(showCertInfo(cert.issuerInfo(QSslCertificate::StateOrProvinceName)));
+    ui->issuedByL->setText(showCertInfo(cert.issuerInfo(QSslCertificate::LocalityName)));
+
+    QString secLabel;
+
+    switch(QzTools::isCertificateValid(cert)) {
+    case true:
+        secLabel = "<span style=\"color: #008000\">" + tr("Yes") + "</span>";
+        break;
+    case false:
+        const QDateTime currentTime = QDateTime::currentDateTime();
+        if (currentTime < cert.effectiveDate() || currentTime > cert.expiryDate()) {
+           secLabel = "<span style=\"color: #ff0000\">" + tr("NO, certificate expired") + "</span>";
+        }
+        else {
+           secLabel = "<span style=\"color: #ff0000\">" + tr("NO, there were errors") + "</span>";
+        }
+        break;
+    }
     //Validity
+    ui->validity->setText(secLabel);
     QLocale locale = QLocale(mApp->currentLanguageFile());
-    ui->validityIssuedOn->setText(locale.toString(cert.effectiveDate(), "dddd d. MMMM yyyy"));
-    ui->validityExpiresOn->setText(locale.toString(cert.expiryDate(), "dddd d. MMMM yyyy"));
+    ui->period->setText(tr("%1  to  %2").arg(locale.toString(cert.effectiveDate(), "dddd d. MMMM yyyy"), locale.toString(cert.expiryDate(), "dddd d. MMMM yyyy")));
+
+    //Other
+    ui->issuedToSN->setText(showCertInfo(cert.serialNumber()));
+    ui->certMd5->setText(cert.digest().toHex());
+    ui->certSha1->setText(cert.digest(QCryptographicHash::Sha1).toHex());
 }
 
 CertificateInfoWidget::~CertificateInfoWidget()

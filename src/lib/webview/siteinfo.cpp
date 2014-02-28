@@ -71,7 +71,7 @@ SiteInfo::SiteInfo(WebView* view, QWidget* parent)
     m_baseUrl = frame->baseUrl();
 
     //GENERAL
-    ui->heading->setText(QString("<b>%1</b>:").arg(title));
+    ui->heading->setText(QString("<b>%1</b>").arg(title));
     ui->siteAddress->setText(view->url().toString());
     ui->sizeLabel->setText(QzTools::fileSizeToString(webPage->totalBytes()));
     QString encoding;
