@@ -17,9 +17,11 @@
 * ============================================================ */
 #include "commandlineoptions.h"
 #include "browserwindow.h"
+#include "mainapplication.h"
 
 #include <QCoreApplication>
 #include <QFileInfo>
+#define tr(s) QObject::tr(s)
 
 CommandLineOptions::CommandLineOptions(int &argc)
     : m_argc(argc)
@@ -36,34 +38,35 @@ void CommandLineOptions::showHelp()
 {
     using namespace std;
 
-    const char* help = " Usage: qupzilla [options] URL  \n"
-                       "\n"
-                       " QupZilla options:\n"
-                       "    -h or --help                        print this message \n"
-                       "    -a or --authors                     print QupZilla authors \n"
-                       "    -v or --version                     print QupZilla version \n"
-                       "\n"
-                       "    -p=PROFILE or --profile=PROFILE     start with specified profile \n"
-                       "    -ne or --no-extensions              start without extensions\n"
-                       "    -po or --portable                   start in portable mode\n"
-                       "\n"
-                       " Options to control running QupZilla:\n"
-                       "    -nt or --new-tab                    open new tab\n"
-                       "    -nw or --new-window                 open new window\n"
-                       "    -pb or --private-browsing           start private browsing\n"
-                       "    -dm or --download-manager           show download manager\n"
-                       "    -fs or --fullscreen                 toggle fullscreen\n"
-                       "    -nr or --no-remote                  open new browser instance\n"
-                       "    -ct=URL or --current-tab=URL        open URL in current tab\n"
-                       "    -ow=URL or --open-window=URL        open URL in new window\n"
-                       "\n"
-                       " QupZilla is a new, fast and secure web browser\n"
-                       " based on WebKit core (http://webkit.org) and\n"
-                       " written in Qt Framework (http://qt-project.org/) \n\n"
-                       " For more information please visit wiki at \n"
-                       " https://github.com/QupZilla/qupzilla/wiki \n";
+    const QString orw = tr("or");
+    const QString help = " " + tr("Usage:") + " qupzilla " + "[options] URL" +"\n" +
+                       "\n" +
+                       " " + tr("QupZilla options:") + "\n" +
+                       "    -h " + orw + " --help                        " + tr("print this message") + "\n" +
+                       "    -a " + orw + " --authors                     " + tr("print QupZilla authors") + "\n" +
+                       "    -v " + orw + " --version                     " + tr("print QupZilla version") + "\n" +
+                       "\n" +
+                       "    -p=" + tr("PROFILE") + " " + orw + " --profile=" + tr("PROFILE") + "     " + tr("start with specified profile") + "\n" +
+                       "    -ne " + orw + " --no-extensions              " + tr("start without extensions") + "\n" +
+                       "    -po " + orw + " --portable                   " + tr("start in portable mode") + "\n" +
+                       "\n" +
+                       " " + tr("Options to control running QupZilla:") + "\n" +
+                       "    -nt " + orw + " --new-tab                    " + tr("open new tab") + "\n" +
+                       "    -nw " + orw + " --new-window                 " + tr("open new window") + "\n" +
+                       "    -pb " + orw + " --private-browsing           " + tr("start private browsing") + "\n" +
+                       "    -dm " + orw + " --download-manager           " + tr("show download manager") + "\n" +
+                       "    -fs " + orw + " --fullscreen                 " + tr("toggle fullscreen") + "\n" +
+                       "    -nr " + orw + " --no-remote                  " + tr("open new browser instance") + "\n" +
+                       "    -ct=" + tr("URL") + " " + orw + " --current-tab=" + tr("URL") + "        " + tr("open URL in current tab") + "\n" +
+                       "    -ow=" + tr("URL") + " " + orw + " --open-window=" + tr("URL") + "        " + tr("open URL in new window") + "\n" +
+                       "\n" +
+                       " " + tr("QupZilla is a new, fast and secure web browser") + "\n" +
+                       " " + tr("based on WebKit core (http://webkit.org) and") + "\n" +
+                       " " + tr("written in Qt Framework (http://qt-project.org/)") + "\n\n" +
+                       " " + tr("For more information please visit wiki at") + "\n" +
+                       " https://github.com/QupZilla/qupzilla/wiki\n";
 
-    cout << help << " > " << Qz::WWWADDRESS.toUtf8().data() << endl;
+    cout << help.toUtf8().data() << " > " << Qz::WWWADDRESS.toUtf8().data() << endl;
 }
 
 void CommandLineOptions::parseActions()
@@ -88,7 +91,7 @@ void CommandLineOptions::parseActions()
         }
 
         if (arg == QLatin1String("-a") || arg == QLatin1String("--authors")) {
-            cout << "QupZilla authors: " << endl;
+            cout << tr("QupZilla authors: ").toUtf8().data() << endl;
             cout << "  David Rosca <nowrep@gmail.com>" << endl;
             ActionPair pair;
             pair.action = Qz::CL_ExitAction;
@@ -113,7 +116,7 @@ void CommandLineOptions::parseActions()
             int index = arg.indexOf(QLatin1Char('='));
             if (index != -1) {
                 const QString profileName = arg.mid(index + 1);
-                cout << "QupZilla: Starting with profile '" << profileName.toUtf8().data() << "'" << endl;
+                cout << tr("QupZilla: Starting with profile").toUtf8().data() << " '" << profileName.toUtf8().data() << "'" << endl;
 
                 ActionPair pair;
                 pair.action = Qz::CL_StartWithProfile;
